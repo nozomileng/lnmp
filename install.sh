@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 export PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
-
+START_TIME=$(date +%s)
 # Check if user is root
 if [ $(id -u) != "0" ]; then
     echo "Error: You must be root to run this script, please use root to install lnmp"
@@ -15,7 +15,7 @@ else
     Stack=$1
 fi
 
-LNMP_Ver='2.1'
+LNMP_Ver='2.2'
 . lnmp.conf
 . include/main.sh
 . include/init.sh
@@ -47,11 +47,11 @@ Check_LNMPConf
 
 clear
 echo "+------------------------------------------------------------------------+"
-echo "|          LNMP V${LNMP_Ver} for ${DISTRO} Linux Server, Written by Licess          |"
+echo "|    LNMP V${LNMP_Ver} for ${DISTRO} Linux Server, Written by Licess     |"
 echo "+------------------------------------------------------------------------+"
 echo "|        A tool to auto-compile & install LNMP/LNMPA/LAMP on Linux       |"
 echo "+------------------------------------------------------------------------+"
-echo "|           For more information please visit https://lnmp.org           |"
+echo "|           For more information please visit https://lnmp.me            |"
 echo "+------------------------------------------------------------------------+"
 
 Init_Install()
@@ -107,17 +107,21 @@ Init_Install()
     elif [ "${DBSelect}" = "5" ]; then
         Install_MySQL_80
     elif [ "${DBSelect}" = "6" ]; then
-        Install_MySQL_84
-    elif [ "${DBSelect}" = "7" ]; then
         Install_MariaDB_5
-    elif [ "${DBSelect}" = "8" ]; then
-        Install_MariaDB_103
-    elif [ "${DBSelect}" = "9" ]; then
+    elif [ "${DBSelect}" = "7" ]; then
         Install_MariaDB_104
-    elif [ "${DBSelect}" = "10" ]; then
+    elif [ "${DBSelect}" = "8" ]; then
         Install_MariaDB_105
-    elif [ "${DBSelect}" = "11" ]; then
+    elif [ "${DBSelect}" = "9" ]; then
         Install_MariaDB_106
+    elif [ "${DBSelect}" = "10" ]; then
+        Install_MariaDB_1011
+    elif [ "${DBSelect}" = "11" ]; then
+        Install_MySQL_84
+    elif [ "${DBSelect}" = "12" ]; then
+        Install_MariaDB_114
+    elif [ "${DBSelect}" = "13" ]; then
+        Install_MariaDB_118
     fi
     TempMycnf_Clean
     Clean_DB_Src_Dir
@@ -154,6 +158,10 @@ Install_PHP()
         Install_PHP_82
     elif [ "${PHPSelect}" = "14" ]; then
         Install_PHP_83
+    elif [ "${PHPSelect}" = "15" ]; then
+        Install_PHP_84
+    elif [ "${PHPSelect}" = "16" ]; then
+        Install_PHP_85
     fi
     Clean_PHP_Src_Dir
 }
@@ -230,5 +238,9 @@ case "${Stack}" in
         Echo_Red "Usage: $0 {nginx|db|mphp}"
         ;;
 esac
+
+END_TIME=$(date +%s)
+ELAPSED=$((END_TIME - START_TIME))
+echo "脚本执行时长: ${ELAPSED} 秒"
 
 exit
