@@ -627,6 +627,10 @@ Install_Libmcrypt()
     Echo_Blue "[+] Installing ${LibMcrypt_Ver}"
     Tar_Cd ${LibMcrypt_Ver}.tar.gz ${LibMcrypt_Ver}
     patch -p1 < ${cur_dir}/src/patch/libmcrypt.patch
+    # GCC 14 treats implicit function declarations as errors; add missing standard headers.
+    sed -i '1i #include <stdio.h>' modules/algorithms/3-way.c modules/algorithms/cast-128.c
+    sed -i '1i #include <stdlib.h>' modules/algorithms/3-way.c modules/algorithms/cast-128.c
+    sed -i '1i #include <string.h>' modules/algorithms/3-way.c modules/algorithms/cast-128.c
     ./configure
     Make_Install
     /sbin/ldconfig
