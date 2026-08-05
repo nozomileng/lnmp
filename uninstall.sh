@@ -10,7 +10,7 @@ fi
 cur_dir=$(pwd)
 Stack=$1
 
-LNMP_Ver='2.0'
+LNMP_Ver='2.2'
 
 . lnmp.conf
 . include/main.sh
@@ -22,11 +22,11 @@ Get_Dist_Name
 
 clear
 echo "+------------------------------------------------------------------------+"
-echo "|          LNMP V${LNMP_Ver} for ${DISTRO} Linux Server, Written by Licess          |"
+echo "|     LNMP V${LNMP_Ver} for ${DISTRO} Linux Server, Written by Licess    |"
 echo "+------------------------------------------------------------------------+"
 echo "|        A tool to auto-compile & install Nginx+MySQL+PHP on Linux       |"
 echo "+------------------------------------------------------------------------+"
-echo "|           For more information please visit https://lnmp.org           |"
+echo "|           For more information please visit https://lnmp.me            |"
 echo "+------------------------------------------------------------------------+"
 
 Sleep_Sec()
@@ -205,7 +205,7 @@ ${MySQL_Dir}
 /etc/my.cnf
 /bin/lnmp
 EOF
-        Sleep_Sec 3
+        Sleep_Sec 0
         Press_Start
         Uninstall_LNMP
     ;;
@@ -225,7 +225,7 @@ ${MySQL_Dir}
 /etc/my.cnf
 /bin/lnmp
 EOF
-        Sleep_Sec 3
+        Sleep_Sec 0
         Press_Start
         Uninstall_LNMPA
     ;;
@@ -243,7 +243,7 @@ ${MySQL_Dir}
 /etc/my.cnf
 /bin/lnmp
 EOF
-        Sleep_Sec 3
+        Sleep_Sec 0
         Press_Start
         Uninstall_LAMP
     ;;
