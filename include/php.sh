@@ -306,7 +306,9 @@ Install_PHP_52()
     cd ${cur_dir}/src
     if [ "${Is_ARM}" != "y" ]; then
         echo "Install ZendGuardLoader for PHP 5.2..."
-        Download_Files ${Download_Mirror}/web/zend/ZendOptimizer-3.3.9-linux-glibc23-${ARCH}.tar.gz ZendOptimizer-3.3.9-linux-glibc23-${ARCH}.tar.gz
+        #http://downloads.zend.com/optimizer/3.3.9/ZendOptimizer-3.3.9-linux-glibc23-i386.tar.gz
+        #Download_Files ${Download_Mirror}/web/zend/ZendOptimizer-3.3.9-linux-glibc23-${ARCH}.tar.gz ZendOptimizer-3.3.9-linux-glibc23-${ARCH}.tar.gz
+        Download_Files http://downloads.zend.com/optimizer/3.3.9/ZendOptimizer-3.3.9-linux-glibc23-${ARCH}.tar.gz ZendOptimizer-3.3.9-linux-glibc23-${ARCH}.tar.gz
         Tar_Cd ZendOptimizer-3.3.9-linux-glibc23-${ARCH}.tar.gz
         mkdir -p /usr/local/zend/
         \cp ZendOptimizer-3.3.9-linux-glibc23-${ARCH}/data/5_2_x_comp/ZendOptimizer.so /usr/local/zend/
@@ -363,7 +365,9 @@ Install_PHP_53()
     cd ${cur_dir}/src
     if [ "${Is_ARM}" != "y" ]; then
         echo "Install ZendGuardLoader for PHP 5.3..."
-        Download_Files ${Download_Mirror}/web/zend/ZendGuardLoader-php-5.3-linux-glibc23-${ARCH}.tar.gz ZendGuardLoader-php-5.3-linux-glibc23-${ARCH}.tar.gz
+        # Download_Files ${Download_Mirror}/web/zend/ZendGuardLoader-php-5.3-linux-glibc23-${ARCH}.tar.gz ZendGuardLoader-php-5.3-linux-glibc23-${ARCH}.tar.gz
+        # https://downloads.zend.com/guard/5.5.0/ZendGuardLoader-php-5.3-linux-glibc23-x86_64.tar.gz
+        Download_Files https://downloads.zend.com/guard/5.5.0/ZendGuardLoader-php-5.3-linux-glibc23-${ARCH}.tar.gz ZendGuardLoader-php-5.3-linux-glibc23-${ARCH}.tar.gz
         Tar_Cd ZendGuardLoader-php-5.3-linux-glibc23-${ARCH}.tar.gz
         mkdir -p /usr/local/zend/
         \cp ZendGuardLoader-php-5.3-linux-glibc23-${ARCH}/php-5.3.x/ZendGuardLoader.so /usr/local/zend/
@@ -452,7 +456,9 @@ Install_PHP_54()
     cd ${cur_dir}/src
     if [ "${Is_ARM}" != "y" ]; then
         echo "Install ZendGuardLoader for PHP 5.4..."
-        Download_Files ${Download_Mirror}/web/zend/ZendGuardLoader-70429-PHP-5.4-linux-glibc23-${ARCH}.tar.gz ZendGuardLoader-70429-PHP-5.4-linux-glibc23-${ARCH}.tar.gz
+        # https://downloads.zend.com/guard/6.0.0/ZendGuardLoader-70429-PHP-5.4-linux-glibc23-x86_64.tar.gz
+        # Download_Files ${Download_Mirror}/web/zend/ZendGuardLoader-70429-PHP-5.4-linux-glibc23-${ARCH}.tar.gz ZendGuardLoader-70429-PHP-5.4-linux-glibc23-${ARCH}.tar.gz
+        Download_Files https://downloads.zend.com/guard/6.0.0/ZendGuardLoader-70429-PHP-5.4-linux-glibc23-${ARCH}.tar.gz ZendGuardLoader-70429-PHP-5.4-linux-glibc23-${ARCH}.tar.gz
         Tar_Cd ZendGuardLoader-70429-PHP-5.4-linux-glibc23-${ARCH}.tar.gz
         mkdir -p /usr/local/zend/
         \cp ZendGuardLoader-70429-PHP-5.4-linux-glibc23-${ARCH}/php-5.4.x/ZendGuardLoader.so /usr/local/zend/
@@ -545,7 +551,9 @@ Install_PHP_55()
     cd ${cur_dir}/src
     if [ "${Is_ARM}" != "y" ]; then
         echo "Install ZendGuardLoader for PHP 5.5..."
-        Download_Files ${Download_Mirror}/web/zend/zend-loader-php5.5-linux-${ARCH}.tar.gz zend-loader-php5.5-linux-${ARCH}.tar.gz
+        # https://downloads.zend.com/guard/7.0.0/zend-loader-php5.5-linux-x86_64_update1.tar.gz
+        # Download_Files ${Download_Mirror}/web/zend/zend-loader-php5.5-linux-${ARCH}.tar.gz zend-loader-php5.5-linux-${ARCH}.tar.gz
+        Download_Files https://downloads.zend.com/guard/7.0.0/zend-loader-php5.5-linux-${ARCH}.tar.gz zend-loader-php5.5-linux-${ARCH}.tar.gz
         Tar_Cd zend-loader-php5.5-linux-${ARCH}.tar.gz
         mkdir -p /usr/local/zend/
         \cp zend-loader-php5.5-linux-${ARCH}/ZendGuardLoader.so /usr/local/zend/
@@ -641,7 +649,9 @@ Install_PHP_56()
     cd ${cur_dir}/src
     if [ "${Is_ARM}" != "y" ]; then
         echo "Install ZendGuardLoader for PHP 5.6..."
-        Download_Files ${Download_Mirror}/web/zend/zend-loader-php5.6-linux-${ARCH}.tar.gz zend-loader-php5.6-linux-${ARCH}.tar.gz
+        # https://downloads.zend.com/guard/7.0.0/zend-loader-php5.6-linux-x86_64_update1.tar.gz?_gl=1*14e3pkb*_gcl_au*MjE0NTgyNzkxNy4xNzgyNDg3MTE1
+        # Download_Files ${Download_Mirror}/web/zend/zend-loader-php5.6-linux-${ARCH}.tar.gz zend-loader-php5.6-linux-${ARCH}.tar.gz
+        Download_Files https://downloads.zend.com/guard/7.0.0/zend-loader-php5.6-linux-${ARCH}.tar.gz zend-loader-php5.6-linux-${ARCH}.tar.gz
         Tar_Cd zend-loader-php5.6-linux-${ARCH}.tar.gz
         mkdir -p /usr/local/zend/
         \cp zend-loader-php5.6-linux-${ARCH}/ZendGuardLoader.so /usr/local/zend/
@@ -1304,7 +1314,7 @@ Install_PHP_83()
     Install_Composer
 
     cd ${cur_dir}/src
-    echo "Install ZendGuardLoader for PHP 8.3..."
+    echo "Install ZendGuardLoader for ${Php_Ver}..."
     echo "unavailable now."
 
 if [ "${Stack}" = "lnmp" ]; then
@@ -1341,6 +1351,16 @@ EOF
     \cp ${cur_dir}/init.d/php-fpm.service /etc/systemd/system/php-fpm.service
     chmod +x /etc/init.d/php-fpm
 fi
+}
+
+Install_PHP_84()
+{
+    Install_PHP_83
+}
+
+Install_PHP_85()
+{
+    Install_PHP_83
 }
 
 LNMP_PHP_Opt()
@@ -1394,7 +1414,7 @@ eof
     tar Jxf ${PhpMyAdmin_Ver}.tar.xz
     mv ${PhpMyAdmin_Ver} ${Default_Website_Dir}/phpmyadmin
     \cp ${cur_dir}/conf/config.inc.php ${Default_Website_Dir}/phpmyadmin/config.inc.php
-    # sed -i 's/LNMPME/LNMP.me_'`date +%s%N | head -c 13`'_VPS.la/g' ${Default_Website_Dir}/phpmyadmin/config.inc.php
+    # sed -i 's/LNMPORG/LNMP.org_'`date +%s%N | head -c 13`'_VPSer.net/g' ${Default_Website_Dir}/phpmyadmin/config.inc.php
     mkdir ${Default_Website_Dir}/phpmyadmin/{upload,save}
     chmod 755 -R ${Default_Website_Dir}/phpmyadmin/
     chown www:www -R ${Default_Website_Dir}/phpmyadmin/
