@@ -1183,6 +1183,16 @@ fi
     Check_PHP_Upgrade_Files
 }
 
+Upgrade_PHP_84()
+{
+    Upgrade_PHP_83
+}
+
+Upgrade_PHP_85()
+{
+    Upgrade_PHP_83
+}
+
 Upgrade_PHP()
 {
     Start_Upgrade_PHP
@@ -1210,6 +1220,10 @@ Upgrade_PHP()
         Upgrade_PHP_82
     elif echo "${php_version}" | grep -Eqi '^8.3.';then
         Upgrade_PHP_83
+    elif echo "${php_version}" | grep -Eqi '^8.4.';then
+        Upgrade_PHP_84
+    elif echo "${php_version}" | grep -Eqi '^8.5.';then
+        Upgrade_PHP_85
     else
         Echo_Red "PHP version: ${php_version} is not supported."
         exit 1
