@@ -135,17 +135,12 @@ Upgrade_MariaDB()
         echo "Notice: ${MariaDB_FileName}.tar.gz not found!!!download now......"
         if [ "${Bin}" = "y" ]; then
             if [ "${country}" = "CN" ]; then
-                Download_Files https://mirrors.ustc.edu.cn/mariadb/mariadb-${mariadb_version}/bintar-linux-systemd-x86_64/${MariaDB_FileName}.tar.gz ${MariaDB_FileName}.tar.gz
-                if [ $? -eq 0 ]; then
-                    echo "Download ${MariaDB_FileName}.tar.gz successfully!"
-                else
-                    Download_Files https://archive.mariadb.org/mariadb-${mariadb_version}/bintar-linux-systemd-x86_64/${MariaDB_FileName}.tar.gz ${MariaDB_FileName}.tar.gz
-                    if [ $? -ne 0 ]; then
-                        echo "You enter MariaDB Version was:"${mariadb_version}
-                        Echo_Red "Error! You entered a wrong version number or can't download from mariadb mirror, please check!"
+                Download_Files https://archive.mariadb.org/mariadb-${mariadb_version}/bintar-linux-systemd-x86_64/${MariaDB_FileName}.tar.gz ${MariaDB_FileName}.tar.gz
+                if [ $? -ne 0 ]; then
+			echo "You enter MariaDB Version was:"${mariadb_version}
+                	Echo_Red "Error! You entered a wrong version number or can't download from mariadb mirror, please check!"
                         sleep 5
                         exit 1
-                    fi
                 fi
             else
                 Download_Files https://downloads.mariadb.org/rest-api/mariadb/${mariadb_version}/${MariaDB_FileName}.tar.gz ${MariaDB_FileName}.tar.gz
@@ -163,17 +158,12 @@ Upgrade_MariaDB()
             fi
         else
             if [ "${country}" = "CN" ]; then
-                Download_Files https://mirrors.ustc.edu.cn/mariadb/mariadb-${mariadb_version}/source/${MariaDB_FileName}.tar.gz ${MariaDB_FileName}.tar.gz
-                if [ $? -eq 0 ]; then
-                    echo "Download ${MariaDB_FileName}.tar.gz successfully!"
-                else
-                    Download_Files https://archive.mariadb.org/mariadb-${mariadb_version}/source/${MariaDB_FileName}.tar.gz ${MariaDB_FileName}.tar.gz
-                    if [ $? -ne 0 ]; then
-                        echo "You enter MariaDB Version was:"${mariadb_version}
+                Download_Files https://archive.mariadb.org/mariadb-${mariadb_version}/source/${MariaDB_FileName}.tar.gz ${MariaDB_FileName}.tar.gz
+                if [ $? -ne 0 ]; then
+                	echo "You enter MariaDB Version was:"${mariadb_version}
                         Echo_Red "Error! You entered a wrong version number or can't download from mariadb mirror, please check!"
                         sleep 5
                         exit 1
-                    fi
                 fi
             else
                 Download_Files https://downloads.mariadb.org/rest-api/mariadb/${mariadb_version}/${MariaDB_FileName}.tar.gz ${MariaDB_FileName}.tar.gz
