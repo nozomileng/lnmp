@@ -9,7 +9,7 @@ LNMP一键安装包是一个用Linux Shell编写的可以为CentOS/RHEL/Fedora/D
 * 删除下载镜像，所有软件包均从软件官方镜像获取。去除所有与以下域名有关的操作："lnmp.com"、"lnmp.me"、"vpser.net"、"vpser*.net"、"vpszt.net"
 * 由于去除的lnmp.me的下载镜像，中国大陆用户不友好请自行解决。
 * 去除了自动获取服务器所在地，相关设置移动至lnmp.conf > " country='US' " 默认US。大陆用户可以修改将US为CN，mariadb将从USTC镜像获取。
-* 由于去除了下载镜像，SourceGuardian以及ionCube安装失效，如有需求可以通过修改lnmp.conf中" Download_Mirror='https://soft.vpser.net' "恢复lnmp.me下载镜像即可安装。
+* 由于去除了下载镜像，SourceGuardian以及ionCube安装失效，如有需求可以通过修改lnmp.conf中" Download_Mirror='https://soft.vpser.net' "恢复lnmp.com下载镜像即可安装。
 * Nginx Lua以及Zend无法在线获取，可以在release下载自带lua以及zend的包安装。
 * 虽然并没有修改脚本的逻辑，但是使用祛毒版请不要去 https://bbs.vpser.net/forum-25-1.html 反馈。
 
