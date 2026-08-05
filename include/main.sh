@@ -1,26 +1,28 @@
 #!/usr/bin/env bash
 
-DB_Info=('MySQL 5.1.73' 'MySQL 5.5.62' 'MySQL 5.6.51' 'MySQL 5.7.44' 'MySQL 8.0.39' 'MySQL 8.4.2' 'MariaDB 5.5.68' 'MariaDB 10.4.34' 'MariaDB 10.5.26' 'MariaDB 10.6.19' 'MariaDB 10.11.9')
-PHP_Info=('PHP 5.2.17' 'PHP 5.3.29' 'PHP 5.4.45' 'PHP 5.5.38' 'PHP 5.6.40' 'PHP 7.0.33' 'PHP 7.1.33' 'PHP 7.2.34' 'PHP 7.3.33' 'PHP 7.4.33' 'PHP 8.0.30' 'PHP 8.1.29' 'PHP 8.2.23' 'PHP 8.3.11')
-Apache_Info=('Apache 2.2.34' 'Apache 2.4.62')
+DB_Info=('MySQL 5.1.73' 'MySQL 5.5.62' 'MySQL 5.6.51' 'MySQL 5.7.44' 'MySQL 8.0.46' 'MariaDB 5.5.68' 'MariaDB 10.4.34' 'MariaDB 10.5.29' 'MariaDB 10.6.27' 'MariaDB 10.11.18' 'MySQL 8.4.10 LTS' 'MariaDB 11.4.12 LTS' 'MariaDB 11.8.8 LTS')
+PHP_Info=('PHP 5.2.17' 'PHP 5.3.29' 'PHP 5.4.45' 'PHP 5.5.38' 'PHP 5.6.40' 'PHP 7.0.33' 'PHP 7.1.33' 'PHP 7.2.34' 'PHP 7.3.33' 'PHP 7.4.33' 'PHP 8.0.30' 'PHP 8.1.34' 'PHP 8.2.31' 'PHP 8.3.31' 'PHP 8.4.21' 'PHP 8.5.7')
+Apache_Info=('Apache 2.2.34' 'Apache 2.4.67')
 
 Database_Selection()
 {
 #which MySQL Version do you want to install?
     if [ -z ${DBSelect} ]; then
-        DBSelect="2"
-        Echo_Yellow "You have 11 options for your DataBase install."
+        DBSelect="11"
+        Echo_Yellow "You have 13 options for your DataBase install."
         echo "1: Install ${DB_Info[0]}"
-        echo "2: Install ${DB_Info[1]} (Default)"
+        echo "2: Install ${DB_Info[1]} (Legacy)"
         echo "3: Install ${DB_Info[2]}"
         echo "4: Install ${DB_Info[3]}"
-        echo "5: Install ${DB_Info[4]}"
+        echo "5: Install ${DB_Info[4]} (Legacy/EOL)"
         echo "6: Install ${DB_Info[5]}"
         echo "7: Install ${DB_Info[6]}"
         echo "8: Install ${DB_Info[7]}"
         echo "9: Install ${DB_Info[8]}"
         echo "10: Install ${DB_Info[9]}"
-        echo "11: Install ${DB_Info[10]}"
+        echo "11: Install ${DB_Info[10]} (Default)"
+        echo "12: Install ${DB_Info[11]}"
+        echo "13: Install ${DB_Info[12]}"
         echo "0: DO NOT Install MySQL/MariaDB"
         read -p "Enter your choice (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 or 0): " DBSelect
     fi
@@ -32,7 +34,7 @@ Database_Selection()
     2)
         if [[ "${DB_ARCH}" = "x86_64" || "${DB_ARCH}" = "i686" ]]; then
             if [ -z ${Bin} ]; then
-                read -p "Using Generic Binaries [y/n]: " Bin
+                read -p "Using Generic Binaries [y/n]: (Default y)" Bin
             fi
             case "${Bin}" in
             [yY][eE][sS]|[yY])
@@ -55,7 +57,7 @@ Database_Selection()
     3)
         if [[ "${DB_ARCH}" = "x86_64" || "${DB_ARCH}" = "i686" ]]; then
             if [ -z ${Bin} ]; then
-                read -p "Using Generic Binaries [y/n]: " Bin
+                read -p "Using Generic Binaries [y/n]: (Default y) " Bin
             fi
             case "${Bin}" in
             [yY][eE][sS]|[yY])
@@ -83,7 +85,7 @@ Database_Selection()
     4)
         if [[ "${DB_ARCH}" = "x86_64" || "${DB_ARCH}" = "i686" ]]; then
             if [ -z ${Bin} ]; then
-                read -p "Using Generic Binaries [y/n]: " Bin
+                read -p "Using Generic Binaries [y/n]: (Default y) " Bin
             fi
             case "${Bin}" in
             [yY][eE][sS]|[yY])
@@ -111,7 +113,7 @@ Database_Selection()
     5)
         if [[ "${DB_ARCH}" = "x86_64" || "${DB_ARCH}" = "i686" || "${DB_ARCH}" = "aarch64" ]]; then
             if [ -z ${Bin} ]; then
-                read -p "Using Generic Binaries [y/n]: " Bin
+                read -p "Using Generic Binaries [y/n]: (Default y) " Bin
             fi
             case "${Bin}" in
             [yY][eE][sS]|[yY])
@@ -138,9 +140,9 @@ Database_Selection()
         ;;
     6)
         echo "You will install ${DB_Info[5]}"
-        if [[ "${DB_ARCH}" = "x86_64" || "${DB_ARCH}" = "i686" || "${DB_ARCH}" = "aarch64" ]]; then
+        if [[ "${DB_ARCH}" = "x86_64" || "${DB_ARCH}" = "i686" ]]; then
             if [ -z ${Bin} ]; then
-                read -p "Using Generic Binaries [y/n]: " Bin
+                read -p "Using Generic Binaries [y/n]: (Default y) " Bin
             fi
             case "${Bin}" in
             [yY][eE][sS]|[yY])
@@ -169,7 +171,7 @@ Database_Selection()
         echo "You will install ${DB_Info[6]}"
         if [[ "${DB_ARCH}" = "x86_64" || "${DB_ARCH}" = "i686" ]]; then
             if [ -z ${Bin} ]; then
-                read -p "Using Generic Binaries [y/n]: " Bin
+                read -p "Using Generic Binaries [y/n]: (Default y) " Bin
             fi
             case "${Bin}" in
             [yY][eE][sS]|[yY])
@@ -198,7 +200,7 @@ Database_Selection()
         echo "You will install ${DB_Info[7]}"
         if [[ "${DB_ARCH}" = "x86_64" || "${DB_ARCH}" = "i686" ]]; then
             if [ -z ${Bin} ]; then
-                read -p "Using Generic Binaries [y/n]: " Bin
+                read -p "Using Generic Binaries [y/n]: (Default y) " Bin
             fi
             case "${Bin}" in
             [yY][eE][sS]|[yY])
@@ -225,9 +227,9 @@ Database_Selection()
         ;;
     9)
         echo "You will install ${DB_Info[8]}"
-        if [[ "${DB_ARCH}" = "x86_64" || "${DB_ARCH}" = "i686" ]]; then
+        if [[ "${DB_ARCH}" = "x86_64" ]]; then
             if [ -z ${Bin} ]; then
-                read -p "Using Generic Binaries [y/n]: " Bin
+                read -p "Using Generic Binaries [y/n]: (Default y) " Bin
             fi
             case "${Bin}" in
             [yY][eE][sS]|[yY])
@@ -256,7 +258,7 @@ Database_Selection()
         echo "You will install ${DB_Info[9]}"
         if [[ "${DB_ARCH}" = "x86_64" ]]; then
             if [ -z ${Bin} ]; then
-                read -p "Using Generic Binaries [y/n]: " Bin
+                read -p "Using Generic Binaries [y/n]: (Default y) " Bin
             fi
             case "${Bin}" in
             [yY][eE][sS]|[yY])
@@ -283,9 +285,9 @@ Database_Selection()
         ;;
     11)
         echo "You will install ${DB_Info[10]}"
-        if [[ "${DB_ARCH}" = "x86_64" ]]; then
+        if [[ "${DB_ARCH}" = "x86_64" || "${DB_ARCH}" = "i686" || "${DB_ARCH}" = "aarch64" ]]; then
             if [ -z ${Bin} ]; then
-                read -p "Using Generic Binaries [y/n]: " Bin
+                read -p "Using Generic Binaries [y/n]: (Default y) " Bin
             fi
             case "${Bin}" in
             [yY][eE][sS]|[yY])
@@ -310,24 +312,82 @@ Database_Selection()
             Bin="n"
         fi
         ;;
+    12)
+        echo "You will install ${DB_Info[11]}"
+        if [[ "${DB_ARCH}" = "x86_64" || "${DB_ARCH}" = "i686" || "${DB_ARCH}" = "aarch64" ]]; then
+            if [ -z ${Bin} ]; then
+                read -p "Using Generic Binaries [y/n]: (Default y) " Bin
+            fi
+            case "${Bin}" in
+            [yY][eE][sS]|[yY])
+                echo "You will install ${DB_Info[11]} Using Generic Binaries."
+                Bin="y"
+                ;;
+            [nN][oO]|[nN])
+                echo "You will install ${DB_Info[11]} from Source."
+                Bin="n"
+                ;;
+            *)
+                if [ "${CheckMirror}" != "n" ]; then
+                    echo "Default install ${DB_Info[11]} Using Generic Binaries."
+                    Bin="y"
+                else
+                    echo "Default install ${DB_Info[11]} from Source."
+                    Bin="n"
+                fi
+                ;;
+            esac
+        else
+            Bin="n"
+        fi
+        ;;
+    13)
+        echo "You will install ${DB_Info[12]}"
+        if [[ "${DB_ARCH}" = "x86_64" || "${DB_ARCH}" = "i686" || "${DB_ARCH}" = "aarch64" ]]; then
+            if [ -z ${Bin} ]; then
+                read -p "Using Generic Binaries [y/n]: (Default y) " Bin
+            fi
+            case "${Bin}" in
+            [yY][eE][sS]|[yY])
+                echo "You will install ${DB_Info[12]} Using Generic Binaries."
+                Bin="y"
+                ;;
+            [nN][oO]|[nN])
+                echo "You will install ${DB_Info[12]} from Source."
+                Bin="n"
+                ;;
+            *)
+                if [ "${CheckMirror}" != "n" ]; then
+                    echo "Default install ${DB_Info[12]} Using Generic Binaries."
+                    Bin="y"
+                else
+                    echo "Default install ${DB_Info[12]} from Source."
+                    Bin="n"
+                fi
+                ;;
+            esac
+        else
+            Bin="n"
+        fi
+        ;;
     0)
         echo "Do not install MySQL/MariaDB!"
         ;;
     *)
-        echo "No input,You will install ${DB_Info[1]}"
-        DBSelect="2"
+        echo "No input,You will install ${DB_Info[10]}"
+        DBSelect="11"
     esac
 
-    if [ "${Bin}" != "y" ] && [[ "${DBSelect}" =~ ^[5-6]|[8-9]|1[0-1]$ ]] && [ $(awk '/MemTotal/ {printf( "%d\n", $2 / 1024 )}' /proc/meminfo) -le 1024 ]; then
-        echo "Memory less than 1GB, can't install MySQL 8.0 or MairaDB 10.3+!"
+    if [ "${Bin}" != "y" ] && [[ "${DBSelect}" =~ ^(5|[7-9]|1[0-3])$ ]] && [ $(awk '/MemTotal/ {printf( "%d\n", $2 / 1024 )}' /proc/meminfo) -le 1024 ]; then
+        echo "Memory less than 1GB, can't install MySQL 8.x or MariaDB 10.3+!"
         exit 1
     fi
 
-    if [[ "${DBSelect}" =~ ^[789]|1[0-1]$ ]]; then
+    if [[ "${DBSelect}" =~ ^(6|7|8|9|10|12|13)$ ]]; then
         MySQL_Bin="/usr/local/mariadb/bin/mysql"
         MySQL_Config="/usr/local/mariadb/bin/mysql_config"
         MySQL_Dir="/usr/local/mariadb"
-    elif [[ "${DBSelect}" =~ ^[123456]$ ]]; then
+    elif [[ "${DBSelect}" =~ ^(1|2|3|4|5|11)$ ]]; then
         MySQL_Bin="/usr/local/mysql/bin/mysql"
         MySQL_Config="/usr/local/mysql/bin/mysql_config"
         MySQL_Dir="/usr/local/mysql"
@@ -342,7 +402,7 @@ Database_Selection()
             read -p "Please enter: " DB_Root_Password
             if [ "${DB_Root_Password}" = "" ]; then
                 echo "NO input,password will be generated randomly."
-                DB_Root_Password="lnmp.org#$RANDOM"
+                DB_Root_Password="lnmp.me#$RANDOM"
             fi
         fi
         echo "MySQL root password: ${DB_Root_Password}"
@@ -353,7 +413,7 @@ Database_Selection()
         if [ -z ${InstallInnodb} ]; then
             InstallInnodb="y"
             Echo_Yellow "Do you want to enable or disable the InnoDB Storage Engine?"
-            read -p "Default enable,Enter your choice [Y/n]: " InstallInnodb
+            read -p "Default enable,Enter your choice [Y/n]:: (Default y) " InstallInnodb
         fi
 
         case "${InstallInnodb}" in
@@ -378,13 +438,13 @@ PHP_Selection()
     if [ -z ${PHPSelect} ]; then
         echo "==========================="
 
-        PHPSelect="3"
-        Echo_Yellow "You have 9 options for your PHP install."
+        PHPSelect="14"
+        Echo_Yellow "You have 16 options for your PHP install."
         echo "1: Install ${PHP_Info[0]}"
         echo "2: Install ${PHP_Info[1]}"
         echo "3: Install ${PHP_Info[2]}"
         echo "4: Install ${PHP_Info[3]}"
-        echo "5: Install ${PHP_Info[4]} (Default)"
+        echo "5: Install ${PHP_Info[4]} (Legacy)"
         echo "6: Install ${PHP_Info[5]}"
         echo "7: Install ${PHP_Info[6]}"
         echo "8: Install ${PHP_Info[7]}"
@@ -393,8 +453,10 @@ PHP_Selection()
         echo "11: Install ${PHP_Info[10]}"
         echo "12: Install ${PHP_Info[11]}"
         echo "13: Install ${PHP_Info[12]}"
-        echo "14: Install ${PHP_Info[13]}"
-        read -p "Enter your choice (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14): " PHPSelect
+        echo "14: Install ${PHP_Info[13]} (Default)"
+        echo "15: Install ${PHP_Info[14]}"
+        echo "16: Install ${PHP_Info[15]}"
+        read -p "Enter your choice (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16): " PHPSelect
     fi
 
     case "${PHPSelect}" in
@@ -444,9 +506,15 @@ PHP_Selection()
     14)
         echo "You will install ${PHP_Info[13]}"
         ;;
+    15)
+        echo "You will install ${PHP_Info[14]}"
+        ;;
+    16)
+        echo "You will install ${PHP_Info[15]}"
+        ;;
     *)
-        echo "No input,You will install ${PHP_Info[4]}"
-        PHPSelect="5"
+        echo "No input,You will install ${PHP_Info[13]}"
+        PHPSelect="14"
     esac
 }
 
@@ -751,6 +819,36 @@ Get_OS_Bit()
     fi
 }
 
+Verify_Download_File()
+{
+    local FileName=$1
+    local Checksum_File="${cur_dir}/src/checksums.sha256"
+    local Expected_SHA256=""
+    local Actual_SHA256=""
+
+    [ "${Enable_Download_Checksum}" != "y" ] && return 0
+    [ ! -s "${Checksum_File}" ] && return 0
+
+    Expected_SHA256=$(awk -v file="${FileName}" '$1 !~ /^#/ && $2 == file {print $1; exit}' "${Checksum_File}")
+    [ "${Expected_SHA256}" = "" ] && return 0
+
+    if command -v sha256sum >/dev/null 2>&1; then
+        Actual_SHA256=$(sha256sum "${FileName}" | awk '{print $1}')
+    elif command -v shasum >/dev/null 2>&1; then
+        Actual_SHA256=$(shasum -a 256 "${FileName}" | awk '{print $1}')
+    else
+        Echo_Red "sha256sum or shasum not found, cannot verify ${FileName}."
+        return 1
+    fi
+
+    if [ "${Actual_SHA256}" != "${Expected_SHA256}" ]; then
+        Echo_Red "SHA256 checksum mismatch for ${FileName}."
+        rm -f "${FileName}"
+        return 1
+    fi
+    Echo_Green "${FileName} SHA256 checksum ok."
+}
+
 Download_Files()
 {
     local URL=$1
@@ -807,9 +905,9 @@ Print_APP_Ver()
         echo "${Nginx_Ver}"
     fi
 
-    if [[ "${DBSelect}" =~ ^[123456]$ ]]; then
+    if [[ "${DBSelect}" =~ ^(1|2|3|4|5|11)$ ]]; then
         echo "${Mysql_Ver}"
-    elif [[ "${DBSelect}" =~ ^[789]|1[0-1]$ ]]; then
+    elif [[ "${DBSelect}" =~ ^(6|7|8|9|10|12|13)$ ]]; then
         echo "${Mariadb_Ver}"
     elif [ "${DBSelect}" = "0" ]; then
         echo "Do not install MySQL/MariaDB!"
@@ -837,9 +935,9 @@ Print_APP_Ver()
     if [ "${Enable_Nginx_Lua}" = "y" ]; then
         echo "enable Nginx Lua."
     fi
-    if [[ "${DBSelect}" =~ ^[123456]$ ]]; then
+    if [[ "${DBSelect}" =~ ^(1|2|3|4|5|11)$ ]]; then
         echo "Database Directory: ${MySQL_Data_Dir}"
-    elif [[ "${DBSelect}" =~ ^[789]|1[0-1]$ ]]; then
+    elif [[ "${DBSelect}" =~ ^(6|7|8|9|10|12|13)$ ]]; then
         echo "Database Directory: ${MariaDB_Data_Dir}"
     elif [ "${DBSelect}" = "0" ]; then
         echo "Do not install MySQL/MariaDB!"
@@ -904,13 +1002,13 @@ Remove_StartUp()
 
 Check_CMPT()
 {
-    if [[ "${DBSelect}" = "5" && "${Bin}" != "y" ]]; then
+    if [[ "${DBSelect}" =~ ^(5|11)$ && "${Bin}" != "y" ]]; then
         if echo "${Ubuntu_Version}" | grep -Eqi "^1[0-7]\." || echo "${Debian_Version}" | grep -Eqi "^[4-8]" || echo "${Raspbian_Version}" | grep -Eqi "^[4-8]" || echo "${CentOS_Version}" | grep -Eqi "^[4-7]"  || echo "${RHEL_Version}" | grep -Eqi "^[4-7]" || echo "${Fedora_Version}" | grep -Eqi "^2[0-3]"; then
-            Echo_Red "MySQL 8.0 please use latest linux distributions!"
+            Echo_Red "MySQL 8.* please use latest linux distributions!"
             exit 1
         fi
     fi
-    if [[ "${PHPSelect}" =~ ^1[0-3]$ ]]; then
+    if [[ "${PHPSelect}" =~ ^(10|1[1-6])$ ]]; then
         if echo "${Ubuntu_Version}" | grep -Eqi "^1[0-7]\." || echo "${Debian_Version}" | grep -Eqi "^[4-8]" || echo "${Raspbian_Version}" | grep -Eqi "^[4-8]" || echo "${CentOS_Version}" | grep -Eqi "^[4-6]"  || echo "${RHEL_Version}" | grep -Eqi "^[4-6]" || echo "${Fedora_Version}" | grep -Eqi "^2[0-3]"; then
             Echo_Red "PHP 7.4 and PHP 8.* please use latest linux distributions!"
             exit 1
