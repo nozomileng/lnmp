@@ -1280,6 +1280,8 @@ server
         server_name ${domain} ${moredomain};
         index index.html index.htm index.php default.html default.htm default.php;
         root  ${vhostdir};
+        absolute_redirect off;
+        port_in_redirect off;
 
         ssl_certificate ${ssl_certificate};
         ssl_certificate_key ${ssl_certificate_key};
